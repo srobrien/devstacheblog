@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: "Gatsby Default Starter",
-    prefixPath: "/devstacheblog",
   },
+  prefixPath: "/devstacheblog",
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
