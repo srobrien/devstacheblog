@@ -4,14 +4,13 @@ import Link from "gatsby-link";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import logo from "../../images/logo.svg";
-import LogoImage from "../Header/Logo";
 
 const HeaderWrapper = styled.div`
   margin-bottom: 1.45rem;
   overflow: hidden;
   position: relative;
   height: ${({ isHome }) => (isHome ? "45vh" : "28vh")};
-  min-height: 100px;
+
   img {
     height: 80px;
   }
