@@ -4,16 +4,16 @@ import Link from "gatsby-link";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import logo from "../../images/logo.svg";
+import LogoImage from "../Header/Logo";
 
 const HeaderWrapper = styled.div`
   margin-bottom: 1.45rem;
   overflow: hidden;
   position: relative;
-  height: ${({ isHome }) => (isHome ? "40vh" : "15vh")};
-  h1 {
-    img {
-      height: 80px;
-    }
+  height: ${({ isHome }) => (isHome ? "45vh" : "28vh")};
+  min-height: 100px;
+  img {
+    height: 80px;
   }
 `;
 
@@ -46,19 +46,25 @@ const MainNav = styled.nav`
   }
 `;
 
+const LogoImageWrapper = styled.div`
+  img {
+    position: relative;
+  }
+`;
+
 export default class Header extends Component {
   componentDidUpdate = (prevProps, prevState) => {
     const { location } = this.props;
     if (location.pathname !== prevProps.location.pathname) {
       if (this.props.location.pathname === "/") {
-        this.wrapper.animate([{ height: "15vh" }, { height: "40vh" }], {
+        this.wrapper.animate([{ height: "28vh" }, { height: "45vh" }], {
           duration: 300,
           fill: "forwards",
           easing: "cubic-bezier(0.86, 0, 0.07, 1)",
           iterations: 1,
         });
       } else {
-        this.wrapper.animate([{ height: "40vh" }, { height: "15vh" }], {
+        this.wrapper.animate([{ height: "45vh" }, { height: "28vh" }], {
           duration: 300,
           fill: "forwards",
           easing: "cubic-bezier(0.86, 0, 0.07, 1)",
@@ -76,16 +82,15 @@ export default class Header extends Component {
         ref={wrapper => (this.wrapper = ReactDOM.findDOMNode(wrapper))}
       >
         <HeaderContainer>
-          <h1>
-            <Link
-              to="/"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              <img src={logo} alt="Devstache - twiddle my ends" />
-            </Link>
-          </h1>
+          <Link
+            to="/"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <img src={logo} alt="Devstache" height="80" />
+          </Link>
+
           <MainNav>
             <ul>
               <li>
