@@ -9,8 +9,8 @@ const HeaderWrapper = styled.div`
   margin-bottom: 1.45rem;
   overflow: hidden;
   position: relative;
-  height: ${({ isHome }) => (isHome ? "45vh" : "28vh")};
-
+  height: ${({ isHome }) => (isHome ? "45vh" : "20vh")};
+  min-height: 110px;
   img {
     height: 80px;
   }
@@ -56,14 +56,14 @@ export default class Header extends Component {
     const { location } = this.props;
     if (location.pathname !== prevProps.location.pathname) {
       if (this.props.location.pathname === "/") {
-        this.wrapper.animate([{ height: "28vh" }, { height: "45vh" }], {
+        this.wrapper.animate([{ height: "20vh" }, { height: "45vh" }], {
           duration: 300,
           fill: "forwards",
           easing: "cubic-bezier(0.86, 0, 0.07, 1)",
           iterations: 1,
         });
       } else {
-        this.wrapper.animate([{ height: "45vh" }, { height: "28vh" }], {
+        this.wrapper.animate([{ height: "45vh" }, { height: "20vh" }], {
           duration: 300,
           fill: "forwards",
           easing: "cubic-bezier(0.86, 0, 0.07, 1)",
