@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import Link from "gatsby-link";
 import styled from "styled-components";
 import Img from "gatsby-image";
+import logo from "../../images/logo.svg";
 
 const HeaderWrapper = styled.div`
-  background: #524763;
   margin-bottom: 1.45rem;
   overflow: hidden;
   position: relative;
-  height: ${({ isHome }) => (isHome ? "70vh" : "20vh")};
+  height: ${({ isHome }) => (isHome ? "40vh" : "15vh")};
   h1 {
     img {
       height: 80px;
@@ -51,14 +51,14 @@ export default class Header extends Component {
     const { location } = this.props;
     if (location.pathname !== prevProps.location.pathname) {
       if (this.props.location.pathname === "/") {
-        this.wrapper.animate([{ height: "20vh" }, { height: "70vh" }], {
+        this.wrapper.animate([{ height: "15vh" }, { height: "40vh" }], {
           duration: 300,
           fill: "forwards",
           easing: "cubic-bezier(0.86, 0, 0.07, 1)",
           iterations: 1,
         });
       } else {
-        this.wrapper.animate([{ height: "70vh" }, { height: "20vh" }], {
+        this.wrapper.animate([{ height: "40vh" }, { height: "15vh" }], {
           duration: 300,
           fill: "forwards",
           easing: "cubic-bezier(0.86, 0, 0.07, 1)",
@@ -83,7 +83,7 @@ export default class Header extends Component {
                 textDecoration: "none",
               }}
             >
-              {data.site.siteMetadata.title}
+              <img src={logo} alt="Devstache - twiddle my ends" />
             </Link>
           </h1>
           <MainNav>
@@ -104,7 +104,6 @@ export default class Header extends Component {
             top: 0,
             width: "100%",
             height: "100%",
-            opacity: 0.3,
           }}
           sizes={data.background.sizes}
         />
