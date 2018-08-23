@@ -13,6 +13,7 @@ const IndexPage = ({ data }) => (
     <BlogCard alt={false} type="react" />
     <BlogCard alt={true} type="css" />
     <BlogCard alt={false} type="gatsby" />
+    <BlogCard alt={true} type="default" />
   </div>
 );
 

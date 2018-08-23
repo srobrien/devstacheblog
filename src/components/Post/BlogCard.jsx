@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
 import stache from "../../images/icons/stache.svg";
+import stachebg from "../../images/icons/stachebg.svg";
 import react from "../../images/icons/react.svg";
 import css from "../../images/icons/css.svg";
 import gatsby from "../../images/icons/gatsby.svg";
-
-import styled from "styled-components";
 
 const CardContainer = styled.div`
   border-radius: 5px;
@@ -29,7 +30,6 @@ const CardContainer = styled.div`
     flex-basis: 20%;
     position: relative;
     text-align: center;
-
     order: ${({ alt }) => (alt ? "1" : "0")};
     img {
       margin-bottom: 0;
@@ -49,9 +49,18 @@ const CardContainer = styled.div`
     flex-basis: 80%;
     backface-visibility: hidden;
     padding: 10px;
+    z-index: 2;
     &:hover {
       background-color: lightgray;
       transition: 0.5s ease;
+    }
+  }
+
+  .background {
+    @media (max-width: 515px) {
+      background-size: cover;
+      background-position: center;
+      background-image: url(${stachebg});
     }
   }
 `;
@@ -89,7 +98,7 @@ export default class BlogCardBasic extends Component {
         </div>
 
         <div className="description">
-          <div className="overlay">
+          <div className="background">
             <h3>Post Title</h3>
             <h4>Date</h4>
             <p>
