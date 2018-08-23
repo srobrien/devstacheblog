@@ -21,5 +21,11 @@ module.exports = {
     },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Fira Sans\:300,400`],
+      },
+    },
   ],
 };
