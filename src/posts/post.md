@@ -1,6 +1,8 @@
 ---
 title: "Welcome to the blog"
 date: "2018-08-20"
+type: "react"
+tags: ["things", "is", "this", "working"]
 ---
 
 ## Hello

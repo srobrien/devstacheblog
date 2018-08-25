@@ -1,7 +1,7 @@
 ---
 title: "Second post"
 date: "2018-08-22"
-type: "gatsby"
+type: "default"
 tags: ["node", "react", "html", "css"]
 ---
 

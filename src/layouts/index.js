@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "./index.css";
 
 const Layout = ({ children, data, location }) => (
@@ -24,6 +25,7 @@ const Layout = ({ children, data, location }) => (
     >
       {children()}
     </div>
+    <Footer />
   </div>
 );
 

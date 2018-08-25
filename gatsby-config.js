@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Devstache - if you can read this send help!",
+    title: "Devstache",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -24,7 +24,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Fira Sans\:300,400`],
+        fonts: [`Fira Sans\:300,400`, "Arimo:400, 700"],
       },
     },
   ],

@@ -1,19 +1,18 @@
 import React from "react";
-import PostListing from "../components/Post/PostListing";
 import BlogCard from "../components/Post/BlogCard";
 import styled from "styled-components";
 
 const IndexPage = ({ data }) => (
-  <div>
-    <h1>Blog Site</h1>
-    {/* {data.allMarkdownRemark.edges.map(({ node }) => (
-      <PostListing key={node.id} post={node} />
-    ))} */}
-
-    <BlogCard alt={false} type="react" />
-    <BlogCard alt={true} type="css" />
-    <BlogCard alt={false} type="gatsby" />
-    <BlogCard alt={true} type="default" />
+  <div className="grid-container">
+    {data.allMarkdownRemark.edges.map(({ node }) => {
+      return (
+        <BlogCard
+          key={node.id}
+          post={node}
+          type={node.frontmatter.type}
+        />
+      );
+    })}
   </div>
 );
 
@@ -33,9 +32,11 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM YYYY")
+            type
+            tags
           }
           html
-          excerpt(pruneLength: 280)
+          excerpt(pruneLength: 150)
           fields {
             slug
           }

@@ -1,69 +1,98 @@
 import React, { Component } from "react";
+import Link from "gatsby-link";
 import styled from "styled-components";
-
 import stache from "../../images/icons/stache.svg";
-import stachebg from "../../images/icons/stachebg.svg";
 import react from "../../images/icons/react.svg";
 import css from "../../images/icons/css.svg";
 import gatsby from "../../images/icons/gatsby.svg";
+import monday from "../../images/icons/days/1.svg";
+import tuesday from "../../images/icons/days/2.svg";
+import wednesday from "../../images/icons/days/3.svg";
+import thursday from "../../images/icons/days/4.svg";
+import friday from "../../images/icons/days/5.svg";
+import saturday from "../../images/icons/days/6.svg";
+import sunday from "../../images/icons/days/7.svg";
+import calenderIcon from "../../images/icons/days/default.svg";
+
+const Pill = styled.span`
+  background-color: #ffc107;
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  margin-top: 5px;
+  margin-right: 5px;
+`;
 
 const CardContainer = styled.div`
   border-radius: 5px;
   box-shadow: 0 3px 7px -1px;
   display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  align-content: space-around;
+  
   margin-bottom: 40px;
   transition: 0.5s ease;
+  background-color: ghostwhite;
+	.background {
+		background-image: url("${props => props.logo}");
+		background-size: cover;
+		background-position-x: center;
+	
+	}
+	
   &:hover {
-    transform: ${({ alt }) => (alt ? "rotate(-2deg)" : "rotate(2deg)")};
     transition: 0.5s ease;
     cursor: pointer;
+    
+    
+		
+	
   }
 
-  .logo {
-    @media (max-width: 515px) {
-      display: none;
-    }
-    background-color: lightgray;
-    flex-basis: 20%;
-    position: relative;
-    text-align: center;
-    order: ${({ alt }) => (alt ? "1" : "0")};
-    img {
-      margin-bottom: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%);
-      filter: drop-shadow(4px 3px 4px #000);
-    }
-  }
   .description {
-    @media (max-width: 515px) {
-      flex-basis: 100%;
-    }
-    transition: 0.5s ease;
-    flex-basis: 80%;
-    backface-visibility: hidden;
     padding: 10px;
     z-index: 2;
-    &:hover {
-      background-color: lightgray;
-      transition: 0.5s ease;
+    a {
+      text-decoration-line: none;
+      color: #000;
+      h3 {
+        font-size: 1.5rem;
+      }
     }
-  }
-
-  .background {
-    @media (max-width: 515px) {
-      background-size: cover;
-      background-position: center;
-      background-image: url(${stachebg});
+    .link {
+      text-align: right;
+      margin-right: 20px;
     }
   }
 `;
+
+const DateWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .date {
+    max-width: 50%;
+    h4 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+  }
+  img {
+    width: 70%;
+  }
+`;
+
+const getRandomColor = () => {
+  let letters = "0123456789ABCDEF";
+  let color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 export default class BlogCardBasic extends Component {
   render() {
@@ -91,22 +120,74 @@ export default class BlogCardBasic extends Component {
         logo = stache;
     }
 
-    return (
-      <CardContainer alt={this.props.alt}>
-        <div className="logo">
-          <img src={logo} alt="react" height="80" />
-        </div>
+    const { title, date, tags } = this.props.post.frontmatter;
+    const { excerpt } = this.props.post;
+    const { alt } = this.props;
+    const { slug } = this.props.post.fields;
+    const day = new Date(date).getDay();
+    let calender = calenderIcon;
 
+    switch (day) {
+      case 1:
+        calender = monday;
+        break;
+
+      case 2:
+        calender = tuesday;
+        break;
+
+      case 3:
+        calender = wednesday;
+        break;
+
+      case 4:
+        calender = thursday;
+        break;
+
+      case 5:
+        calender = friday;
+        break;
+
+      case 6:
+        calender = saturday;
+        break;
+
+      case 7:
+        calender = sunday;
+        break;
+
+      default:
+        break;
+    }
+
+    return (
+      <CardContainer alt={alt} logo={logo}>
         <div className="description">
           <div className="background">
-            <h3>Post Title</h3>
-            <h4>Date</h4>
-            <p>
-              YOLO Bushwick distillery stumptown chillwave four loko street art
-              pickled +1 kale chips gluten-free cred Austin PBR butcher before
-              they sold out mustache farm-to-table Helvetica freegan raw d enim
-              mixtape Tonx forage Pitchfork 8-bit
-            </p>
+            <Link to={slug}>
+              <h3>{title}</h3>
+            </Link>
+
+            <DateWrapper>
+              <div className="calender">
+                <img src={calender} alt="day" />
+              </div>
+              <div className="date">
+                <h4>{date}</h4>
+              </div>
+            </DateWrapper>
+            <div>
+              {tags.map(tag => (
+                <Pill style={{ backgroundColor: getRandomColor() }} key={tag}>
+                  {tag}
+                </Pill>
+              ))}
+            </div>
+
+            <p>{excerpt}</p>
+            <div className="link">
+              <Link to={slug}>[...]</Link>
+            </div>
           </div>
         </div>
       </CardContainer>
