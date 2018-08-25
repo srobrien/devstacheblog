@@ -39,13 +39,15 @@ const TitleText = styled.div`
     padding-bottom: 5px;
     margin: 0;
   }
+
   @media (max-width: 450px) {
     font-size: 2.5rem;
     img {
       height: 35px;
     }
+  }
 
-		@media (max-width: 365px) {
+  @media (max-width: 365px) {
     font-size: 2.5rem;
     img {
       display: none;
