@@ -45,7 +45,7 @@ const TitleText = styled.div`
       height: 35px;
     }
 
-		@media (max-width: 450px) {
+		@media (max-width: 365px) {
     font-size: 2.5rem;
     img {
       display: none;
