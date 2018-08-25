@@ -1,8 +1,37 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Link from "gatsby-link";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import logo from "../../images/icons/stache.svg";
+
+const tashWiggle = keyframes`
+  0%,
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(6deg);
+            transform: translateX(-30px) rotate(6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(-6deg);
+            transform: translateX(15px) rotate(-6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(3.6deg);
+            transform: translateX(-15px) rotate(3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(-2.4deg);
+            transform: translateX(9px) rotate(-2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(1.2deg);
+            transform: translateX(-6px) rotate(1.2deg);
+  }
+`;
 
 const HeaderWrapper = styled.div`
   margin-bottom: 20px;
@@ -32,15 +61,12 @@ const TitleText = styled.div`
   background-color: #fff;
   margin: 0;
   padding: 5px;
-  img {
-    height: 45px;
-    vertical-align: middle;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    margin: 0;
-  }
+	&:hover{
+		cursor: pointer;
+	}
+	}
 
-  @media (max-width: 450px) {
+	@media (max-width: 450px) {
     font-size: 2.5rem;
     img {
       height: 35px;
@@ -75,12 +101,38 @@ const SubTitleText = styled.div`
   }
 `;
 
+const Tash = styled.img`
+  height: 45px;
+  vertical-align: middle;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  margin: 0;
+  ${TitleText}:hover & {
+    animation: ${tashWiggle} 1s infinite both;
+    transform: translate3d(0, 0, 0);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  color: hsla(0, 0%, 0%, 0.8);
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
+
 export default class Header extends Component {
   render() {
     return (
       <HeaderWrapper>
-        <TitleText>
-          DEVSTACHE <img src={logo} />
+        <TitleText as={Link}>
+          <StyledLink to="/">
+            DEVSTACHE <Tash src={logo} />
+          </StyledLink>
         </TitleText>
 
         <SubTitleText>A JOURNEY FROM DRONGO TO DEV </SubTitleText>
