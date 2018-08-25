@@ -7,7 +7,7 @@ import logo from "../../images/icons/stache.svg";
 const HeaderWrapper = styled.div`
   margin-bottom: 20px;
   display: grid;
-  grid-template-columns: 20px repeat(9, 1fr);
+  grid-template-columns: 20px repeat(auto-fit, minmax(186px, 1fr));
   grid-template-rows: 20px repeat(4, 1fr);
   min-height: 300px;
   background-color: #e583e2;
@@ -32,33 +32,32 @@ const TitleText = styled.div`
   background-color: #fff;
   margin: 0;
   padding: 5px;
+  img {
+    height: 45px;
+    vertical-align: middle;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+  }
 `;
 
 const SubTitleText = styled.div`
-  grid-column: 2 / span auto;
+  grid-column-start: 2;
+  column-span: auto;
   grid-row: 3;
+  overflow-wrap: normal;
   align-self: center;
   justify-self: start;
   font-family: "Arimo", sans-serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   letter-spacing: 2px;
   background-color: #fff;
   margin: 0;
-  padding: 5px;
+  padding: 5px 0 5px 5px;
 
   @media (max-width: 600px) {
-    font-size: 0.6rem;
-  }
-`;
-
-const Logo = styled.div`
-  grid-column: 3;
-  grid-row: 2;
-  align-self: center;
-  justify-self: center;
-  img {
-    height: 60px;
+    font-size: 0.75rem;
   }
 `;
 
@@ -66,10 +65,10 @@ export default class Header extends Component {
   render() {
     return (
       <HeaderWrapper>
-        <TitleText>DEVSTACHE</TitleText>
-        {/* <Logo>
-          <img src={logo} />
-        </Logo> */}
+        <TitleText>
+          DEVSTACHE <img src={logo} />
+        </TitleText>
+
         <SubTitleText>A JOURNEY FROM DRONGO TO DEV </SubTitleText>
       </HeaderWrapper>
     );
