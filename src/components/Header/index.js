@@ -46,7 +46,7 @@ const HeaderWrapper = styled.div`
     clip-path: none;
     grid-template-rows: 20px repeat(2, 1fr);
     min-height: 150px;
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -112,7 +112,7 @@ const Tash = styled.img`
   padding-bottom: 5px;
   margin: 0;
   ${TitleText}:hover & {
-    animation: ${tashWiggle} 1s 3 both;
+    animation: ${tashWiggle} 1.5s 1 both;
     transform: translate3d(0, 0, 0);
   }
 `;
