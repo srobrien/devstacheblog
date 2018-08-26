@@ -17,7 +17,6 @@ import blogPic from "../../images/blogheader.jpg";
 
 export default class BlogCardBasic extends Component {
   render() {
-		
     const { type } = this.props;
     let logo = stache;
 
@@ -89,7 +88,7 @@ export default class BlogCardBasic extends Component {
             <Link to={slug}>
               <h3>{title}</h3>
             </Link>
-						<DateWrapper>
+            <DateWrapper>
               <div className="calender">
                 <img src={calender} alt="day" />
               </div>
@@ -101,10 +100,8 @@ export default class BlogCardBasic extends Component {
         </Header>
 
         <div className="description">
-          {/* Tags */}
           <div>
             {tags.map(tag => {
-              console.log(tag);
               let theme = themes[tag];
               if (theme === undefined) {
                 theme = {
@@ -114,7 +111,9 @@ export default class BlogCardBasic extends Component {
               }
               return (
                 <ThemeProvider key={tag} theme={theme}>
-                  <Pill key={tag}>{tag}</Pill>
+                  <Link to={`/tags/${tag}`}>
+                    <Pill key={tag}>{tag}</Pill>
+                  </Link>
                 </ThemeProvider>
               );
             })}
@@ -173,12 +172,6 @@ const themes = {
   },
 };
 
-// const colorPicker = {
-// 	1: ,
-// 	2: ,
-// 	3: ,
-// }
-
 const Pill = styled.span`
   background-color: ${props => props.theme.bg};
   color: ${props => props.theme.fg};
@@ -209,7 +202,7 @@ const CardContainer = styled.div`
   .description {
     padding: 10px;
     z-index: 2;
-    
+
     .link {
       text-align: right;
       margin-right: 20px;
@@ -220,13 +213,13 @@ const CardContainer = styled.div`
 const DateWrapper = styled.div`
   display: flex;
   align-items: center;
-	margin-top: 10px;
-	margin-left: 5px;
+  margin-top: 10px;
+  margin-left: 5px;
   .date {
     max-width: 50%;
     h4 {
-			margin: 0;
-			margin-left: 5px;
+      margin: 0;
+      margin-left: 5px;
       font-size: 1.1rem;
     }
   }
@@ -236,26 +229,25 @@ const DateWrapper = styled.div`
 `;
 
 const Header = styled.div`
-	position: relative;
+  position: relative;
   img {
     max-width: 100%;
     width: 100%;
   }
 `;
 
-
 const Overlay = styled.div`
-	position: absolute;
-	bottom: 20px;
-	a {
-      text-decoration-line: none;
-      color: #000;
-      h3 {
-				font-size: 2rem;
-				color: #e583e2;
-				background-color: #000;
-				margin-right: 5%;
-				padding-left:5px;
-      }
+  position: absolute;
+  bottom: 20px;
+  a {
+    text-decoration-line: none;
+    color: #000;
+    h3 {
+      font-size: 2rem;
+      color: #e583e2;
+      background-color: #000;
+      margin-right: 5%;
+      padding-left: 5px;
     }
-`
+  }
+`;

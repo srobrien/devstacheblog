@@ -133,7 +133,7 @@ export default class Header extends Component {
   render() {
     return (
       <HeaderWrapper>
-        <TitleText as={Link}>
+        <TitleText>
           <StyledLink to="/">
             DEVSTACHE <Tash src={logo} />
           </StyledLink>

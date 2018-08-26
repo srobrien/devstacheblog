@@ -4,6 +4,7 @@ date: "2018-08-20"
 type: "react"
 tags: ["node", "react", "javascript", "html", "css", "gatsby", "graphql", "OU"]
 thumbnail: "./blogheader.jpg"
+published: true
 ---
 
 ## Hello
