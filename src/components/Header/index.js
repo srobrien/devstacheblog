@@ -112,7 +112,7 @@ const Tash = styled.img`
   padding-bottom: 5px;
   margin: 0;
   ${TitleText}:hover & {
-    animation: ${tashWiggle} 1s infinite both;
+    animation: ${tashWiggle} 1s 3 both;
     transform: translate3d(0, 0, 0);
   }
 `;

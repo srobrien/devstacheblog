@@ -2,18 +2,20 @@ import React from "react";
 import BlogCard from "../components/Post/BlogCard";
 import styled from "styled-components";
 
+const HomePage = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-column-gap: 30px;
+`;
+
 const IndexPage = ({ data }) => (
-  <div className="grid-container">
+  <HomePage>
     {data.allMarkdownRemark.edges.map(({ node }) => {
       return (
-        <BlogCard
-          key={node.id}
-          post={node}
-          type={node.frontmatter.type}
-        />
+        <BlogCard key={node.id} post={node} type={node.frontmatter.type} />
       );
     })}
-  </div>
+  </HomePage>
 );
 
 export default IndexPage;
@@ -36,7 +38,7 @@ export const query = graphql`
             tags
           }
           html
-          excerpt(pruneLength: 150)
+          excerpt(pruneLength: 350)
           fields {
             slug
           }

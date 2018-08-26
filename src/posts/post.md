@@ -1,8 +1,9 @@
 ---
-title: "Welcome to the blog"
+title: "Welcome to the blog this is the first step"
 date: "2018-08-20"
 type: "react"
-tags: ["things", "is", "this", "working"]
+tags: ["node", "react", "javascript", "html", "css", "gatsby", "graphql", "OU"]
+thumbnail: "./blogheader.jpg"
 ---
 
 ## Hello
