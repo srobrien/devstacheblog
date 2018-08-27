@@ -17,9 +17,27 @@ const ResponseHeader = styled.div`
   align-items: flex-end;
   h1,
   h3 {
-    background-color: #000;
-    color: pink;
     margin: 0;
+    padding: 2px;
+  }
+
+  h1 {
+    margin-bottom: 3px;
+    background-color: #000;
+    color: #fff;
+  }
+
+  h3 {
+    color: #fff;
+    margin-bottom: 9px;
+    background-image: linear-gradient(to right, #e583e2, #e583e2 50%, #000 50%);
+    background-size: 220% 100%;
+    background-position: 100%;
+    :hover {
+      transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
+      background-position: 0%;
+      cursor: pointer;
+    }
   }
 
   @media (max-width: 500px) {
@@ -40,13 +58,18 @@ const Tags = ({ pathContext, data }) => {
   const { edges, totalCount } = data.allMarkdownRemark;
   const tagHeader = `${totalCount} POST${
     totalCount === 1 ? "" : "S"
-  } TAGGED WITH ${tag.toUpperCase()}`;
+  } TAGGED WITH `;
 
   return (
     <div>
       <ResponseHeader>
-        <h1>{tagHeader}</h1>
-        <h3>> BACK TO ALL POSTS</h3>
+        <h1>
+          {tagHeader}
+          <span style={{ color: "#e583e2" }}>{tag.toUpperCase()}</span>
+        </h1>
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          <h3>> BACK TO ALL POSTS</h3>
+        </Link>
       </ResponseHeader>
 
       <HomePage>
@@ -70,8 +93,10 @@ Tags.propTypes = {
       edges: PropTypes.arrayOf(
         PropTypes.shape({
           node: PropTypes.shape({
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }),
             frontmatter: PropTypes.shape({
-              path: PropTypes.string.isRequired,
               title: PropTypes.string.isRequired,
             }),
           }),

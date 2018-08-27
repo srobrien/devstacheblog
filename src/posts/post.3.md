@@ -2,7 +2,7 @@
 title: "Welcome to the blog this is the first step"
 date: "2018-08-20"
 type: "react"
-tags: ["node", "react", "javascript", "html", "css", "gatsby", "graphql", "OU"]
+tags: ["OU"]
 thumbnail: "./blogheader.jpg"
 published: true
 ---
