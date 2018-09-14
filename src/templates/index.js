@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import BlogCard from "../components/Post/BlogCard";
 import Tags from "../components/Tags/Tags";
@@ -56,7 +56,7 @@ const IndexPage = ({ data, pathContext }) => {
   const nextUrl = (index + 1).toString();
 
   return (
-    <Fragment>
+    <div>
       <PageContainer>
         <Sidebar>
           <Test />
@@ -89,7 +89,7 @@ const IndexPage = ({ data, pathContext }) => {
           </div>
         </MainPage>
       </PageContainer>
-    </Fragment>
+    </div>
   );
 };
 export default IndexPage;
