@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import profile from "../../images/superhandsomedude.png";
+//import profile from "../../images/superhandsomedude.png";
 
 const FooterBar = styled.div`
   background-color: #70c8c2;

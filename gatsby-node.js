@@ -1,18 +1,7 @@
+const createPaginatedPages = require("gatsby-paginate");
 const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
 const _ = require("lodash");
-
-exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
-  const { createNodeField } = boundActionCreators;
-  if (node.internal.type === "MarkdownRemark") {
-    const slug = createFilePath({ node, getNode, basePath: "posts" });
-    createNodeField({
-      node,
-      name: "slug",
-      value: `/posts${slug}`,
-    });
-  }
-};
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
@@ -22,17 +11,34 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
+      allContentfulBlogPost(
+        sort: { order: DESC, fields: [createdAt] }
         limit: 2000
       ) {
         edges {
           node {
-            fields {
-              slug
+            title
+            createdAt(formatString: "D MMMM YYYY")
+            body {
+              id
+              childMarkdownRemark {
+                id
+                excerpt(pruneLength: 200)
+              }
             }
-            frontmatter {
-              tags
+            slug
+            tags
+            thumbnail {
+              resolutions {
+                src
+              }
+            }
+
+            images {
+              id
+              resize(width: 400) {
+                src
+              }
             }
           }
         }
@@ -43,15 +49,24 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.allContentfulBlogPost.edges;
+
+    createPaginatedPages({
+      edges: posts,
+      createPage: createPage,
+      pageTemplate: "src/templates/index.js",
+      pageLength: 4, // This is optional and defaults to 10 if not used
+      pathPrefix: "", // This is optional and defaults to an empty string if not used
+      context: {}, // This is optional and defaults to an empty object if not used
+    });
 
     // Create post detail pages
     posts.forEach(({ node }) => {
       createPage({
-        path: node.fields.slug,
+        path: `/post/${node.slug}`,
         component: blogPostTemplate,
         context: {
-          slug: node.fields.slug,
+          post: node.slug,
         },
       });
     });
@@ -60,8 +75,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     let tags = [];
     // Iterate through each post, putting all found tags into `tags`
     _.each(posts, edge => {
-      if (_.get(edge, "node.frontmatter.tags")) {
-        tags = tags.concat(edge.node.frontmatter.tags);
+      if (_.get(edge, "node.tags")) {
+        tags = tags.concat(edge.node.tags);
       }
     });
     // Eliminate duplicate tags

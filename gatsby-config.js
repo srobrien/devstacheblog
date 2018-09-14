@@ -14,14 +14,33 @@ module.exports = {
       options: { name: "img", path: `${__dirname}/src/images` },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: "gatsby-source-contentful",
       options: {
-        excerpt_separator: `<!--end-->`,
+        spaceId: "9ebxiovtt8p6",
+        accessToken:
+          "6006d21119cede78415d09188fa13ee7bff0c19ab4d39fd1e6b14a169c2b0987",
       },
     },
+
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    "gatsby-plugin-netlify-cms",
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 400,
+            },
+          },
+        ],
+      },
+    },
+
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {

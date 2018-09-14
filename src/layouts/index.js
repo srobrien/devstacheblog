@@ -17,8 +17,10 @@ const Layout = ({ children, data, location }) => (
     <Header data={data} location={location} />
     <div
       style={{
-        margin: "0 auto",
-        maxWidth: 960,
+        //margin: "0 auto",
+        marginLeft: 20,
+        marginRight: "auto",
+        maxWidth: 1240,
         padding: "0px 0.5rem 1.45rem",
         paddingTop: 0,
       }}
