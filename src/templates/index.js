@@ -20,13 +20,11 @@ const TagBar = styled.nav`
   margin-bottom: 30px;
   display: block;
   text-align: right;
-  margin-right: 4.5%;
 `;
 
 const HomePage = styled.section`
   top: 100px;
-  padding-right: 5%;
-  padding-left: 5%;
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-column-gap: 30px;
@@ -61,8 +59,6 @@ const PageNavigation = styled.div`
     }
   }
 `;
-
-const tags = [];
 
 const NavLink = props => {
   if (!props.test) {
