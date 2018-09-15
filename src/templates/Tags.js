@@ -94,7 +94,7 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          createdAt(formatString: "D MMMM YYYY")
+          date(formatString: "DD MMMM YYYY")
           body {
             id
             childMarkdownRemark {

@@ -13,12 +13,12 @@ import calenderIcon from "../../images/icons/days/default.svg";
 
 export default class BlogCardBasic extends Component {
   render() {
-    const { title, createdAt, tags } = this.props.post;
+    const { title, date, tags } = this.props.post;
     const { excerpt } = this.props.post.body.childMarkdownRemark;
     const thumbnail = this.props.post.thumbnail.resolutions.src;
     const { slug } = this.props.post;
     const url = `/post/${slug}`;
-    const day = new Date(createdAt).getDay();
+    const day = new Date(date).getDay();
 
     let calender = calenderIcon;
     switch (day) {
@@ -56,22 +56,16 @@ export default class BlogCardBasic extends Component {
 
     return (
       <CardContainer>
-        <Header>
-          <img src={thumbnail} />
-
-          <Overlay>
+        <Header thumbnail={thumbnail}>
+          <PostMeta>
             <Link to={url}>
               <h3>{title}</h3>
-            </Link>
-            <DateWrapper>
-              <div className="calender">
+              <DateWrapper>
                 <img src={calender} alt="day" />
-              </div>
-              <div className="date">
-                <h4>{createdAt}</h4>
-              </div>
-            </DateWrapper>
-          </Overlay>
+                <h4>{date}</h4>
+              </DateWrapper>
+            </Link>
+          </PostMeta>
         </Header>
 
         <div className="description">
@@ -79,7 +73,7 @@ export default class BlogCardBasic extends Component {
 
           <p>{excerpt}</p>
           <div className="link">
-            <Link to={url}>[...]</Link>
+            <Link to={url}>[Read More...]</Link>
           </div>
         </div>
       </CardContainer>
@@ -98,59 +92,66 @@ const CardContainer = styled.article`
     transition: 0.5s ease;
     cursor: pointer;
   }
-
   .description {
     padding: 10px;
     z-index: 2;
-
     .link {
       text-align: right;
       margin-right: 20px;
+      a {
+        text-decoration: none;
+        color: #000;
+      }
     }
-  }
-`;
-
-const DateWrapper = styled.div`
-  background-color: white;
-  border: 2px solid red;
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  margin-left: 5px;
-  .date {
-    max-width: 50%;
-    h4 {
-      margin: 0;
-      margin-left: 5px;
-      font-size: 1.1rem;
-    }
-  }
-  img {
-    width: 70%;
   }
 `;
 
 const Header = styled.div`
   position: relative;
-  img {
-    max-width: 100%;
-    width: 100%;
-    max-height: 300px;
-  }
+  height: 300px;
+  background: url(${props => props.thumbnail});
+  background-size: cover;
+  background-position: center center;
+  background-repeat: none;
+  padding-right: 10px;
 `;
 
-const Overlay = styled.div`
+const PostMeta = styled.div`
   position: absolute;
-  bottom: 20px;
+
+  left: 0;
+  bottom: 0px;
+  width: 90%;
   a {
     text-decoration-line: none;
     color: #000;
     h3 {
       font-size: 2rem;
-      color: #e583e2;
+      color: #fff;
       background-color: #000;
-      margin-right: 5%;
+      padding-right: 5px;
       padding-left: 5px;
+      margin: 0;
+    }
+  }
+`;
+
+const DateWrapper = styled.div`
+	width: 70%;
+  padding-top: 3px;
+  white-space: nowrap;
+ 	background-color: black;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  img {
+    padding: 3px;
+  }
+	h4 {
+			margin:0;
+      margin-left: 10px;
+      font-size: 1.2rem;
+     
     }
   }
 `;

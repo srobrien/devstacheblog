@@ -12,13 +12,13 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   return graphql(`
     {
       allContentfulBlogPost(
-        sort: { order: DESC, fields: [createdAt] }
+        sort: { order: DESC, fields: [date] }
         limit: 2000
       ) {
         edges {
           node {
             title
-            createdAt(formatString: "D MMMM YYYY")
+            date(formatString: "DD MMMM YYYY")
             body {
               id
               childMarkdownRemark {
@@ -51,26 +51,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     const posts = result.data.allContentfulBlogPost.edges;
 
-    createPaginatedPages({
-      edges: posts,
-      createPage: createPage,
-      pageTemplate: "src/templates/index.js",
-      pageLength: 4, // This is optional and defaults to 10 if not used
-      pathPrefix: "", // This is optional and defaults to an empty string if not used
-      context: {}, // This is optional and defaults to an empty object if not used
-    });
-
-    // Create post detail pages
-    posts.forEach(({ node }) => {
-      createPage({
-        path: `/post/${node.slug}`,
-        component: blogPostTemplate,
-        context: {
-          post: node.slug,
-        },
-      });
-    });
-
     // Tag pages:
     let tags = [];
     // Iterate through each post, putting all found tags into `tags`
@@ -81,6 +61,27 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     });
     // Eliminate duplicate tags
     tags = _.uniq(tags);
+
+    createPaginatedPages({
+      edges: posts,
+      createPage: createPage,
+      pageTemplate: "src/templates/index.js",
+      pageLength: 4, // This is optional and defaults to 10 if not used
+      pathPrefix: "", // This is optional and defaults to an empty string if not used
+      context: { tags }, // This is optional and defaults to an empty object if not used
+    });
+
+    // Create post detail pages
+    posts.forEach(({ node }) => {
+      createPage({
+        path: `/post/${node.slug}`,
+        component: blogPostTemplate,
+        context: {
+          post: node.slug,
+          tags,
+        },
+      });
+    });
 
     // Make tag pages
     tags.forEach(tag => {
