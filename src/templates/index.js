@@ -3,17 +3,16 @@ import styled from "styled-components";
 import BlogCard from "../components/Post/BlogCard";
 import Tags from "../components/Tags/Tags";
 import Link from "gatsby-link";
+import SocialMediaBar from "../components/Social/SocialMediaBar";
 
 const PageContainer = styled.div`
   position: relative;
-`;
-
-const MainPage = styled.div`
-  /* flex: 0 1 auto; */
-`;
-
-const Sidebar = styled.div`
-  margin-bottom: 30px;
+  @media (max-width: 1024px) {
+    margin-left: 50px;
+  }
+  @media (max-width: 620px) {
+    margin-left: 0;
+  }
 `;
 
 const TagBar = styled.nav`
@@ -22,11 +21,23 @@ const TagBar = styled.nav`
   text-align: right;
 `;
 
+const TagText = styled.div`
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  h3 {
+    margin-bottom: 3px;
+    background-color: #000;
+    color: #fff;
+    padding: 2px;
+  }
+`;
+
 const HomePage = styled.section`
   top: 100px;
-
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-column-gap: 30px;
 `;
 
@@ -68,20 +79,22 @@ const NavLink = props => {
   }
 };
 
-const IndexPage = ({ data, pathContext }) => {
+const IndexPage = ({ pathContext }) => {
   const { tags } = pathContext.additionalContext;
   const { group, index, first, last, pageCount } = pathContext;
   const previousUrl = index - 1 == 1 ? "" : (index - 1).toString();
   const nextUrl = (index + 1).toString();
 
   return (
-    <PageContainer>
-      <TagBar>
-        <h3>REFINE POSTS BY CATEGORY</h3>
-        <Tags tags={tags} />
-      </TagBar>
-
-      <MainPage>
+    <div>
+      <SocialMediaBar />
+      <PageContainer>
+        <TagBar>
+          <TagText>
+            <h3>REFINE POSTS BY CATEGORY</h3>
+          </TagText>
+          <Tags tags={tags} />
+        </TagBar>
         <HomePage>
           {group.map(({ node }) => {
             return <BlogCard key={node.body.id} post={node} />;
@@ -92,8 +105,8 @@ const IndexPage = ({ data, pathContext }) => {
           <NavLink test={first} url={previousUrl} text="<<" />
           <NavLink test={last} url={nextUrl} text=">>" />
         </PageNavigation>
-      </MainPage>
-    </PageContainer>
+      </PageContainer>
+    </div>
   );
 };
 export default IndexPage;

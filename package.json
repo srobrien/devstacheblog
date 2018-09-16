@@ -4,6 +4,11 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-brands-svg-icons": "^5.3.1",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "axios": "^0.18.0",
     "gatsby": "^1.9.277",
     "gatsby-link": "^1.6.46",
     "gatsby-paginate": "^1.0.16",

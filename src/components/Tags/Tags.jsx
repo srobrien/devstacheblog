@@ -58,6 +58,10 @@ const Pill = styled.span`
   vertical-align: baseline;
   margin: 5px 5px 5px 0px;
   box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.75);
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: rotate(5deg);
+  }
 `;
 
 export default class Tags extends Component {

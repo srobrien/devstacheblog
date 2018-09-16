@@ -2,12 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import BlogCard from "../components/Post/BlogCard";
 import styled from "styled-components";
+import SocialMediaBar from "../components/Social/SocialMediaBar";
 import Link from "gatsby-link";
 
 const HomePage = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-column-gap: 30px;
+
+  @media (max-width: 1024px) {
+    margin-left: 50px;
+  }
+  @media (max-width: 620px) {
+    margin-left: 0;
+  }
 `;
 
 const ResponseHeader = styled.div`
@@ -63,11 +71,12 @@ const Tags = ({ pathContext, data }) => {
 
   return (
     <div>
+      <SocialMediaBar />
       <ResponseHeader>
-        <h1>
+        <h3>
           {tagHeader}
           <span style={{ color: "#e583e2" }}>{tag.toUpperCase()}</span>
-        </h1>
+        </h3>
         <Link to={"/"} style={{ textDecoration: "none" }}>
           <h3>> BACK TO ALL POSTS</h3>
         </Link>
