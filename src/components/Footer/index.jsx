@@ -14,21 +14,6 @@ const FooterBar = styled.div`
 
 export default class Footer extends Component {
   render() {
-    return (
-      <FooterBar>
-        <form name="contact" method="POST" netlify>
-          <p style={{ marginTop: "80px" }}>
-            <label>
-              Email: <input type="text" name="name" />
-            </label>
-          </p>
-
-          <div data-netlify-recaptcha />
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </form>
-      </FooterBar>
-    );
+    return <FooterBar />;
   }
 }

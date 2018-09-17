@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import Link from "gatsby-link";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import Tags from "../../components/Tags/Tags";
-import monday from "../../images/icons/days/1.svg";
-import tuesday from "../../images/icons/days/2.svg";
-import wednesday from "../../images/icons/days/3.svg";
-import thursday from "../../images/icons/days/4.svg";
-import friday from "../../images/icons/days/5.svg";
-import saturday from "../../images/icons/days/6.svg";
-import sunday from "../../images/icons/days/7.svg";
-import calenderIcon from "../../images/icons/days/default.svg";
+import DateTime from "../Util/Date";
 
 export default class BlogCardBasic extends Component {
   render() {
@@ -18,41 +11,6 @@ export default class BlogCardBasic extends Component {
     const thumbnail = this.props.post.thumbnail.resolutions.src;
     const { slug } = this.props.post;
     const url = `/post/${slug}`;
-    const day = new Date(date).getDay();
-
-    let calender = calenderIcon;
-    switch (day) {
-      case 1:
-        calender = monday;
-        break;
-
-      case 2:
-        calender = tuesday;
-        break;
-
-      case 3:
-        calender = wednesday;
-        break;
-
-      case 4:
-        calender = thursday;
-        break;
-
-      case 5:
-        calender = friday;
-        break;
-
-      case 6:
-        calender = saturday;
-        break;
-
-      case 0:
-        calender = sunday;
-        break;
-
-      default:
-        break;
-    }
 
     return (
       <CardContainer>
@@ -60,10 +18,7 @@ export default class BlogCardBasic extends Component {
           <PostMeta>
             <Link to={url}>
               <h3>{title}</h3>
-              <DateWrapper>
-                <img src={calender} alt="day" />
-                <h4>{date}</h4>
-              </DateWrapper>
+              <DateTime date={date} width="70%" />
             </Link>
           </PostMeta>
         </Header>
@@ -132,26 +87,6 @@ const PostMeta = styled.div`
       padding-right: 5px;
       padding-left: 5px;
       margin: 0;
-    }
-  }
-`;
-
-const DateWrapper = styled.div`
-	width: 70%;
-  padding-top: 3px;
-  white-space: nowrap;
- 	background-color: black;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  img {
-    padding: 3px;
-  }
-	h4 {
-			margin:0;
-      margin-left: 10px;
-      font-size: 1.2rem;
-     
     }
   }
 `;
