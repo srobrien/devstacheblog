@@ -41,6 +41,9 @@ const ResponseHeader = styled.div`
     background-image: linear-gradient(to right, #e583e2, #e583e2 50%, #000 50%);
     background-size: 220% 100%;
     background-position: 100%;
+  }
+
+  .back {
     :hover {
       transition: all 0.3s cubic-bezier(0, 0, 0.23, 1);
       background-position: 0%;
@@ -78,7 +81,7 @@ const Tags = ({ pathContext, data }) => {
           <span style={{ color: "#e583e2" }}>{tag.toUpperCase()}</span>
         </h3>
         <Link to={"/"} style={{ textDecoration: "none" }}>
-          <h3>> BACK TO ALL POSTS</h3>
+          <h3 className="back">> BACK TO ALL POSTS</h3>
         </Link>
       </ResponseHeader>
 

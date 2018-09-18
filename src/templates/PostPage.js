@@ -27,6 +27,7 @@ const Header = styled.div`
     margin-bottom: 10px;
     background: #000;
     display: inline-block;
+    padding: 3px;
   }
 `;
 
@@ -82,7 +83,7 @@ export default class PostPage extends Component {
           <SocialMediaBar />
           <h1>{postData.title}</h1>
 
-          <DateTime date={postData.date} width="30%" />
+          <DateTime date={postData.date} width="200px" />
           <br />
           <Tags tags={postData.tags} />
         </Header>
