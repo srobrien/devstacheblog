@@ -4,8 +4,8 @@ import Link from "gatsby-link";
 
 const themes = {
   node: {
-    bg: "#026e00", //green
-    fg: "#ffffff", //white
+    bg: "#026e00",
+    fg: "#ffffff",
   },
   react: {
     bg: "#61dafb",
@@ -42,6 +42,10 @@ const themes = {
   graphql: {
     bg: "#161f26",
     fg: "#e30098",
+  },
+  personal: {
+    bg: "#8b2da3",
+    fg: "#ffffff",
   },
 };
 

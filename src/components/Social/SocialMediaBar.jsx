@@ -82,7 +82,11 @@ export default class SocialMediaBar extends Component {
             </SocialButton>
           </a>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/rosco_p_c0ltrane/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <SocialButton padding="6" bgColor="rgba(244, 71, 71, 1)">
               <FontAwesomeIcon
                 icon={faInstagram}
@@ -92,7 +96,11 @@ export default class SocialMediaBar extends Component {
             </SocialButton>
           </a>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/srobrien"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <SocialButton padding="4" bgColor="rgba(33, 31, 31, 1)">
               <FontAwesomeIcon
                 icon={faGithub}
@@ -102,7 +110,11 @@ export default class SocialMediaBar extends Component {
             </SocialButton>
           </a>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/ross-o-brien-6b429616a/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <SocialButton padding="6" bgColor="rgba(0, 119, 181, 1)">
               <FontAwesomeIcon
                 icon={faLinkedinIn}
