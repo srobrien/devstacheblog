@@ -18,7 +18,7 @@ export default class BlogCardBasic extends Component {
           <PostMeta>
             <Link to={url}>
               <h3>{title}</h3>
-              <DateTime date={date} width="70%" />
+              <DateTime date={date} width="75%" />
             </Link>
           </PostMeta>
         </Header>

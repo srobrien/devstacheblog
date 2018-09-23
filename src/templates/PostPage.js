@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import Link from "gatsby-link";
 import styled from "styled-components";
 import Prism from "prismjs";
@@ -71,9 +72,13 @@ export default class PostPage extends Component {
   render() {
     const postData = this.props.data.contentfulBlogPost;
     const { post } = this.props.pathContext;
-    console.log(Prism.plugins);
+
     return (
       <div>
+        <Helmet>
+          <title>{postData.title}</title>
+        </Helmet>
+
         <ResponseHeader>
           <Link to={"/"} style={{ textDecoration: "none" }}>
             <h3>> BACK TO ALL POSTS</h3>
@@ -83,14 +88,21 @@ export default class PostPage extends Component {
           <SocialMediaBar />
           <h1>{postData.title}</h1>
 
-          <DateTime date={postData.date} width="200px" />
+          <DateTime date={postData.date} width="220px" />
           <br />
           <Tags tags={postData.tags} />
-          <h4 style={{ textAlign: "right", color: "#000", marginBottom: 0 }}>
-            Last Edited: {postData.updatedAt}
-          </h4>
         </Header>
         <div />
+        <h4
+          style={{
+            textAlign: "right",
+            color: "#000",
+            marginTop: "10px",
+            fontStyle: "italic",
+          }}
+        >
+          Last Edited: {postData.updatedAt}
+        </h4>
         <MainPost
           dangerouslySetInnerHTML={{
             __html: postData.body.childMarkdownRemark.html,
