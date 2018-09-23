@@ -86,8 +86,11 @@ export default class PostPage extends Component {
           <DateTime date={postData.date} width="200px" />
           <br />
           <Tags tags={postData.tags} />
+          <h4 style={{ textAlign: "right", color: "#000", marginBottom: 0 }}>
+            Last Edited: {postData.updatedAt}
+          </h4>
         </Header>
-
+        <div />
         <MainPost
           dangerouslySetInnerHTML={{
             __html: postData.body.childMarkdownRemark.html,
@@ -103,6 +106,7 @@ export const query = graphql`
     contentfulBlogPost(slug: { eq: $post }) {
       title
       date(formatString: "DD MMMM YYYY")
+      updatedAt(formatString: "DD MMMM YYYY")
       tags
       images {
         resolutions {
