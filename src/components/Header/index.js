@@ -58,7 +58,8 @@ const TitleText = styled.div`
   grid-row: 2;
   align-self: center;
   justify-self: start;
-  font-family: "Arimo", sans-serif;
+	font-family: "Arimo", sans-serif;
+	font-display: auto;
   font-weight: 700;
   font-size: 3rem;
   letter-spacing: 2px;
@@ -93,6 +94,7 @@ const SubTitleText = styled.div`
   align-self: center;
   justify-self: start;
   font-family: "Arimo", sans-serif;
+  font-display: auto;
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 2px;
