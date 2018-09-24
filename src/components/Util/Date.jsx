@@ -31,7 +31,7 @@ const DateWrapper = styled.div`
 
 const DateTime = ({ date, width }) => {
   const day = new Date(date).getDay();
-  console.log(width);
+
   let calender = calenderIcon;
   switch (day) {
     case 1:
