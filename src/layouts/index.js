@@ -25,7 +25,9 @@ const Layout = ({ children, data, location }) => (
           content: "index,follow",
         },
       ]}
-    />
+    >
+      <html lang="en" />
+    </Helmet>
 
     <Header data={data} location={location} />
     <div

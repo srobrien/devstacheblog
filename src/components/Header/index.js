@@ -135,7 +135,7 @@ export default class Header extends Component {
       <HeaderWrapper>
         <TitleText>
           <StyledLink to="/">
-            DEVSTACHE <Tash src={logo} />
+            DEVSTACHE <Tash src={logo} alt="title logo" />
           </StyledLink>
         </TitleText>
 
