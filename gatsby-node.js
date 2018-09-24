@@ -66,9 +66,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       edges: posts,
       createPage: createPage,
       pageTemplate: "src/templates/index.js",
-      pageLength: 10, // This is optional and defaults to 10 if not used
-      pathPrefix: "", // This is optional and defaults to an empty string if not used
-      context: { tags }, // This is optional and defaults to an empty object if not used
+      pageLength: 10, 
+      pathPrefix: "", 
+      context: { tags }, 
     });
 
     // Create post detail pages

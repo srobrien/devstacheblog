@@ -25,7 +25,21 @@ const Layout = ({ children, data, location }) => (
           content: "index,follow",
         },
       ]}
+      script={[
+        {
+          type: "text/javascript",
+          src: "https://www.googletagmanager.com/gtag/js?id=UA-126280941-1",
+        },
+        {
+          type: "text/javascript",
+          innerHTML: `window.dataLayer = window.dataLayer || [];
+  										function gtag(){dataLayer.push(arguments);}
+  										gtag('js', new Date());
+											gtag('config', 'UA-126280941-1');`,
+        },
+      ]}
     />
+
     <Header data={data} location={location} />
     <div
       style={{
