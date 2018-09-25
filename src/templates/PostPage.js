@@ -20,10 +20,9 @@ const MainPost = styled.div`
   h3 {
     margin-top: 30px;
   }
-  img {
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
-    box-shadow: 6px 7px 16px -5px rgba(0, 0, 0, 0.62) !important;
+  .gatsby-resp-image-link {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 `;
 
