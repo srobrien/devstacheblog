@@ -1,25 +1,31 @@
-import React, { Component } from 'react'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import Layout from '../components/index.js'
-import Link from 'gatsby-link'
-import styled from 'styled-components'
-import Prism from 'prismjs'
-import '../components/prism.css'
-import 'prismjs/plugins/line-numbers/prism-line-numbers'
-import Tags from '../components/Tags/Tags'
-import DateTime from '../components/Util/Date'
-import SocialMediaBar from '../components/Social/SocialMediaBar'
+import React, { Component } from "react";
+import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
+import Layout from "../components/index.js";
+import Link from "gatsby-link";
+import styled from "styled-components";
+import Prism from "prismjs";
+import "../components/prism.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers";
+import Tags from "../components/Tags/Tags";
+import DateTime from "../components/Util/Date";
+import SocialMediaBar from "../components/Social/SocialMediaBar";
 
 const MainPost = styled.div`
   p {
     line-height: 2rem;
     text-align: justify;
   }
+
+  h3 {
+    margin-top: 20px;
+  }
   img {
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-shadow: 6px 7px 16px -5px rgba(0, 0, 0, 0.62) !important;
   }
-`
+`;
 
 const Header = styled.div`
   background-color: #ffffff;
@@ -32,7 +38,7 @@ const Header = styled.div`
     display: inline-block;
     padding: 3px;
   }
-`
+`;
 
 const ResponseHeader = styled.div`
   text-align: right;
@@ -54,25 +60,25 @@ const ResponseHeader = styled.div`
       cursor: pointer;
     }
   }
-`
+`;
 
 export default class PostPage extends Component {
   componentDidMount = () => {
-    const codeBlocks = document.querySelectorAll('code')
+    const codeBlocks = document.querySelectorAll("code");
     codeBlocks.forEach(code => {
-      code.classList.add('language-javascript')
-    })
+      code.classList.add("language-javascript");
+    });
 
-    const preBlocks = document.querySelectorAll('pre')
+    const preBlocks = document.querySelectorAll("pre");
     preBlocks.forEach(pre => {
-      pre.classList.add('line-numbers')
-    })
+      pre.classList.add("line-numbers");
+    });
 
-    Prism.highlightAll()
-  }
+    Prism.highlightAll();
+  };
 
   render() {
-    const postData = this.props.data.contentfulBlogPost
+    const postData = this.props.data.contentfulBlogPost;
 
     return (
       <Layout>
@@ -81,7 +87,7 @@ export default class PostPage extends Component {
         </Helmet>
 
         <ResponseHeader>
-          <Link to={'/'} style={{ textDecoration: 'none' }}>
+          <Link to={"/"} style={{ textDecoration: "none" }}>
             <h3>> BACK TO ALL POSTS</h3>
           </Link>
         </ResponseHeader>
@@ -96,10 +102,10 @@ export default class PostPage extends Component {
         <div />
         <h4
           style={{
-            textAlign: 'right',
-            color: '#000',
-            marginTop: '10px',
-            fontStyle: 'italic',
+            textAlign: "right",
+            color: "#000",
+            marginTop: "10px",
+            fontStyle: "italic",
           }}
         >
           Last Edited: {postData.updatedAt}
@@ -110,7 +116,7 @@ export default class PostPage extends Component {
           }}
         />
       </Layout>
-    )
+    );
   }
 }
 
@@ -133,4 +139,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
