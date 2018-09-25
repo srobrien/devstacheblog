@@ -3,7 +3,8 @@ module.exports = {
     title: "Devstache - Web developers blog",
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+		"gatsby-plugin-react-helmet",
+		`gatsby-plugin-favicon`,
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
