@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import BlogCard from "../components/Post/BlogCard";
-import Tags from "../components/Tags/Tags";
-import Link from "gatsby-link";
-import SocialMediaBar from "../components/Social/SocialMediaBar";
+import React from 'react'
+import styled from 'styled-components'
+import BlogCard from '../components/Post/BlogCard'
+import Tags from '../components/Tags/Tags'
+import Link from 'gatsby-link'
+import Layout from '../components/index.js'
+import SocialMediaBar from '../components/Social/SocialMediaBar'
 
 const PageContainer = styled.div`
   position: relative;
@@ -13,13 +14,13 @@ const PageContainer = styled.div`
   @media (max-width: 620px) {
     margin-left: 0;
   }
-`;
+`
 
 const TagBar = styled.nav`
   margin-bottom: 30px;
   display: block;
   text-align: right;
-`;
+`
 
 const TagText = styled.div`
   text-align: right;
@@ -32,14 +33,14 @@ const TagText = styled.div`
     color: #fff;
     padding: 2px;
   }
-`;
+`
 
 const HomePage = styled.section`
   top: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-column-gap: 30px;
-`;
+`
 
 const PageNavigation = styled.div`
   font-size: 1.5rem;
@@ -69,24 +70,24 @@ const PageNavigation = styled.div`
       cursor: pointer;
     }
   }
-`;
+`
 
 const NavLink = props => {
   if (!props.test) {
-    return <Link to={props.url}>{props.text}</Link>;
+    return <Link to={props.url}>{props.text}</Link>
   } else {
-    return <span>{props.text}</span>;
+    return <span>{props.text}</span>
   }
-};
+}
 
-const IndexPage = ({ pathContext }) => {
-  const { tags } = pathContext.additionalContext;
-  const { group, index, first, last, pageCount } = pathContext;
-  const previousUrl = index - 1 == 1 ? "" : (index - 1).toString();
-  const nextUrl = (index + 1).toString();
+const IndexPage = ({ pageContext }) => {
+  const { tags } = pageContext.additionalContext
+  const { group, index, first, last } = pageContext
+  const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
+  const nextUrl = (index + 1).toString()
 
   return (
-    <div>
+    <Layout>
       <SocialMediaBar />
       <PageContainer>
         <TagBar>
@@ -97,7 +98,7 @@ const IndexPage = ({ pathContext }) => {
         </TagBar>
         <HomePage>
           {group.map(({ node }) => {
-            return <BlogCard key={node.body.id} post={node} />;
+            return <BlogCard key={node.body.id} post={node} />
           })}
         </HomePage>
 
@@ -106,7 +107,7 @@ const IndexPage = ({ pathContext }) => {
           <NavLink test={last} url={nextUrl} text=">>" />
         </PageNavigation>
       </PageContainer>
-    </div>
-  );
-};
-export default IndexPage;
+    </Layout>
+  )
+}
+export default IndexPage

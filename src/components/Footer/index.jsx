@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import selfie from "../../images/superhandsomedude.png";
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
 const FooterBar = styled.div`
   position: relative;
@@ -10,10 +9,10 @@ const FooterBar = styled.div`
   min-height: 350px;
   padding-top: 30px;
   text-align: center;
-`;
+`
 
 export default class Footer extends Component {
   render() {
-    return <FooterBar />;
+    return <FooterBar />
   }
 }

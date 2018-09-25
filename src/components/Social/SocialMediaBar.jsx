@@ -1,17 +1,13 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faFacebook,
   faTwitter,
   faInstagram,
   faGithub,
-  faLinkedin,
-  faFacebookSquare,
-  faTwitterSquare,
   faFacebookF,
   faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons'
 
 const SocialBar = styled.ul`
   @media (max-width: 620px) {
@@ -25,7 +21,7 @@ const SocialBar = styled.ul`
   text-align: center;
   position: fixed;
   z-index: 2;
-`;
+`
 
 const SocialButton = styled.li`
   text-align: right;
@@ -43,41 +39,49 @@ const SocialButton = styled.li`
     width: 90px;
     cursor: pointer;
   }
-`;
+`
 
 export default class SocialMediaBar extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       loaded: false,
-    };
+    }
   }
 
   componentDidMount = () => {
-    this.setState({ loaded: true });
-  };
+    this.setState({ loaded: true })
+  }
 
   render() {
-    const { loaded } = this.state;
+    const { loaded } = this.state
     if (loaded) {
       return (
         <SocialBar>
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <SocialButton bgColor="rgba(59, 89, 152, 1)" padding="11">
               <FontAwesomeIcon
                 icon={faFacebookF}
                 size="2x"
-                style={{ color: "#fff" }}
+                style={{ color: '#fff' }}
               />
             </SocialButton>
           </a>
 
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <SocialButton bgColor="rgba(29, 161, 242, 1)" padding="3">
               <FontAwesomeIcon
                 icon={faTwitter}
                 size="2x"
-                style={{ color: "#fff" }}
+                style={{ color: '#fff' }}
               />
             </SocialButton>
           </a>
@@ -91,7 +95,7 @@ export default class SocialMediaBar extends Component {
               <FontAwesomeIcon
                 icon={faInstagram}
                 size="2x"
-                style={{ color: "#fff" }}
+                style={{ color: '#fff' }}
               />
             </SocialButton>
           </a>
@@ -105,7 +109,7 @@ export default class SocialMediaBar extends Component {
               <FontAwesomeIcon
                 icon={faGithub}
                 size="2x"
-                style={{ color: "#fff" }}
+                style={{ color: '#fff' }}
               />
             </SocialButton>
           </a>
@@ -119,13 +123,13 @@ export default class SocialMediaBar extends Component {
               <FontAwesomeIcon
                 icon={faLinkedinIn}
                 size="2x"
-                style={{ color: "#fff" }}
+                style={{ color: '#fff' }}
               />
             </SocialButton>
           </a>
         </SocialBar>
-      );
+      )
     }
-    return <div />;
+    return <div />
   }
 }

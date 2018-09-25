@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Link from "gatsby-link";
-import styled, { keyframes } from "styled-components";
-import logo from "../../images/icons/stache.svg";
+import React, { Component } from 'react'
+import Link from 'gatsby-link'
+import styled, { keyframes } from 'styled-components'
+import logo from '../../images/icons/stache.svg'
 
 const tashWiggle = keyframes`
   0%,
@@ -31,7 +31,7 @@ const tashWiggle = keyframes`
     -webkit-transform: translateX(-6px) rotate(1.2deg);
             transform: translateX(-6px) rotate(1.2deg);
   }
-`;
+`
 
 const HeaderWrapper = styled.div`
   margin-bottom: 20px;
@@ -51,7 +51,7 @@ const HeaderWrapper = styled.div`
     top: 0;
     z-index: 1000;
   }
-`;
+`
 
 const TitleText = styled.div`
   grid-column: 2;
@@ -84,7 +84,7 @@ const TitleText = styled.div`
       display: none;
     }
   }
-`;
+`
 
 const SubTitleText = styled.div`
   grid-column-start: 2;
@@ -93,7 +93,7 @@ const SubTitleText = styled.div`
   overflow-wrap: normal;
   align-self: center;
   justify-self: start;
-  font-family: "Arimo", sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-display: auto;
   font-weight: 700;
   font-size: 1.25rem;
@@ -105,7 +105,7 @@ const SubTitleText = styled.div`
   @media (max-width: 600px) {
     font-size: 0.75rem;
   }
-`;
+`
 
 const Tash = styled.img`
   height: 45px;
@@ -117,7 +117,7 @@ const Tash = styled.img`
     animation: ${tashWiggle} 1.5s 1 both;
     transform: translate3d(0, 0, 0);
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   color: hsla(0, 0%, 0%, 0.8);
@@ -129,7 +129,7 @@ const StyledLink = styled(Link)`
   &:active {
     text-decoration: none;
   }
-`;
+`
 
 export default class Header extends Component {
   render() {
@@ -143,6 +143,6 @@ export default class Header extends Component {
 
         <SubTitleText>A JOURNEY FROM DRONGO TO DEV </SubTitleText>
       </HeaderWrapper>
-    );
+    )
   }
 }

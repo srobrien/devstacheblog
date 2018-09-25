@@ -1,9 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import BlogCard from "../components/Post/BlogCard";
-import styled from "styled-components";
-import SocialMediaBar from "../components/Social/SocialMediaBar";
-import Link from "gatsby-link";
+import React from 'react'
+import { graphql } from 'gatsby'
+import BlogCard from '../components/Post/BlogCard'
+import Layout from '../components/index.js'
+import styled from 'styled-components'
+import SocialMediaBar from '../components/Social/SocialMediaBar'
+import Link from 'gatsby-link'
 
 const HomePage = styled.div`
   display: grid;
@@ -16,7 +17,7 @@ const HomePage = styled.div`
   @media (max-width: 620px) {
     margin-left: 0;
   }
-`;
+`
 
 const ResponseHeader = styled.div`
   text-align: right;
@@ -62,42 +63,42 @@ const ResponseHeader = styled.div`
       font-size: 1.2rem;
     }
   }
-`;
+`
 
-const Tags = ({ pathContext, data }) => {
-  const totalCount = data.allContentfulBlogPost.edges.length;
-  const { tag } = pathContext;
-  const { edges } = data.allContentfulBlogPost;
+const Tags = ({ pageContext, data }) => {
+  const totalCount = data.allContentfulBlogPost.edges.length
+  const { tag } = pageContext
+  const { edges } = data.allContentfulBlogPost
   const tagHeader = `${totalCount} POST${
-    totalCount === 1 ? "" : "S"
-  } TAGGED WITH `;
+    totalCount === 1 ? '' : 'S'
+  } TAGGED WITH `
 
   return (
-    <div>
+    <Layout>
       <SocialMediaBar />
       <ResponseHeader>
         <h3>
           {tagHeader}
-          <span style={{ color: "#e583e2" }}>{tag.toUpperCase()}</span>
+          <span style={{ color: '#e583e2' }}>{tag.toUpperCase()}</span>
         </h3>
-        <Link to={"/"} style={{ textDecoration: "none" }}>
+        <Link to={'/'} style={{ textDecoration: 'none' }}>
           <h3 className="back">> BACK TO ALL POSTS</h3>
         </Link>
       </ResponseHeader>
 
       <HomePage>
         {edges.map(({ node }) => {
-          return <BlogCard key={node.id} post={node} />;
+          return <BlogCard key={node.id} post={node} />
         })}
       </HomePage>
-    </div>
-  );
-};
+    </Layout>
+  )
+}
 
-export default Tags;
+export default Tags
 
 export const pageQuery = graphql`
-  query TagPage($tag: String) {
+  query($tag: String) {
     allContentfulBlogPost(
       sort: { order: DESC, fields: [createdAt] }
       limit: 2000
@@ -132,4 +133,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
