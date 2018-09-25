@@ -18,11 +18,11 @@ const MainPost = styled.div`
   }
 
   h3 {
-    margin-top: 20px;
+    margin-top: 30px;
   }
   img {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
     box-shadow: 6px 7px 16px -5px rgba(0, 0, 0, 0.62) !important;
   }
 `;
