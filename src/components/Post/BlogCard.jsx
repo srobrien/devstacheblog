@@ -43,10 +43,7 @@ const CardContainer = styled.article`
   margin-bottom: 40px;
   transition: 0.5s ease;
   background-color: ghostwhite;
-  &:hover {
-    transition: 0.5s ease;
-    cursor: pointer;
-  }
+
   .description {
     padding: 10px;
     z-index: 2;
@@ -80,6 +77,7 @@ const PostMeta = styled.div`
   a {
     text-decoration-line: none;
     color: #000;
+
     h3 {
       font-size: 2rem;
       color: #fff;
@@ -87,6 +85,10 @@ const PostMeta = styled.div`
       padding-right: 5px;
       padding-left: 5px;
       margin: 0;
+      &:hover {
+        cursor: pointer;
+        color: #e583e2;
+      }
     }
   }
 `;

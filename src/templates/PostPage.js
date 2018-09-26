@@ -24,6 +24,13 @@ const MainPost = styled.div`
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
+  a {
+    color: #666;
+    &:hover {
+      color: #e583e2;
+    }
+  }
 `;
 
 const Header = styled.div`
