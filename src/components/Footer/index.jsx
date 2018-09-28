@@ -56,11 +56,9 @@ const FormSection = styled.div`
 `;
 
 const encode = data => {
-  const test = Object.keys(data)
+  return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
-  console.log(test);
-  return test;
 };
 
 export default class Footer extends Component {
@@ -82,9 +80,7 @@ export default class Footer extends Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...this.state }),
     })
-      .then(() => {
-        this.setState({ email: "" });
-      })
+      .then(() => {})
       .catch(error => alert(error));
 
     e.preventDefault();
@@ -101,6 +97,7 @@ export default class Footer extends Component {
           data-netlify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="email" value="" />
         </form>
 
         <FormSection>
