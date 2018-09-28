@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React, { Component } from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const FooterBar = styled.div`
   position: relative;
@@ -9,10 +11,118 @@ const FooterBar = styled.div`
   min-height: 350px;
   padding-top: 30px;
   text-align: center;
-`
+`;
+
+const FormSection = styled.div`
+  position: absolute;
+  right: 5%;
+  bottom: 15%;
+
+  h3 {
+    width: 140px;
+    background: black;
+    color: #e583e2;
+    font-size: 22px;
+    padding: 3px;
+
+    display: block;
+  }
+
+  input {
+    height: 45px;
+    width: 250px;
+    border: 1px solid #e583e2;
+    border-radius: 4px 0 0 4px;
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: bottom;
+
+    &:focus {
+      outline: none !important;
+      border: 1px solid #e583e2;
+    }
+  }
+
+  button {
+    height: 45px;
+    width: 55px;
+    border: 1px solid #e583e2;
+    border-radius: 0 4px 4px 0;
+    background: #e583e2;
+    display: inline-block;
+  }
+`;
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
 
 export default class Footer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+    };
+  }
+
+  handleChange = e => {
+    this.setState({ email: e.target.value });
+  };
+
+  handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...this.state }),
+    })
+      .then(() => {
+        this.setState({ email: "" });
+      })
+      .catch(error => alert(error));
+
+    e.preventDefault();
+  };
+
   render() {
-    return <FooterBar />
+    const { email } = this.state;
+    return (
+      <FooterBar>
+        <form
+          name="contact"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+        </form>
+
+        <FormSection>
+          <form onSubmit={this.handleSubmit}>
+            <h3>MAILING LIST</h3>
+            <input
+              type="email"
+              value={email}
+              name="email"
+              placeholder="Enter email address"
+              onChange={this.handleChange}
+              autoComplete="off"
+              required
+            />
+            <button>
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                size="2x"
+                style={{ color: "#fff" }}
+              />
+            </button>
+          </form>
+        </FormSection>
+      </FooterBar>
+    );
   }
 }
