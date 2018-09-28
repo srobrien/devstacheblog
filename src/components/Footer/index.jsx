@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const FooterBar = styled.div`
   position: relative;
@@ -11,6 +13,10 @@ const FooterBar = styled.div`
   min-height: 350px;
   padding-top: 30px;
   text-align: center;
+  .toastr {
+    background-color: #e583e2;
+    font-size: 22px;
+  }
 `;
 
 const FormSection = styled.div`
@@ -80,10 +86,26 @@ export default class Footer extends Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...this.state }),
     })
-      .then(() => {})
-      .catch(error => alert(error));
+      .then(() => {
+        this.setState({ email: "" });
+        this.successMsg();
+      })
+      .catch(error => this.errorMsg());
 
     e.preventDefault();
+  };
+
+  successMsg = () => {
+    toast.success("Success!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+      className: "toastr",
+    });
+  };
+
+  errorMsg = () => {
+    toast.error("Oops! Something went wrong!", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
   };
 
   render() {
@@ -121,6 +143,8 @@ export default class Footer extends Component {
             </button>
           </form>
         </FormSection>
+
+        <ToastContainer autoClose={2000} />
       </FooterBar>
     );
   }
