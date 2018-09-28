@@ -58,6 +58,16 @@ const FormSection = styled.div`
     border-radius: 0 4px 4px 0;
     background: #e583e2;
     display: inline-block;
+    cursor: pointer;
+  }
+`;
+
+const FontAwesomeIconStyled = styled(FontAwesomeIcon)`
+  color: #fff;
+  transform: translateX(0px);
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: translateX(6px);
   }
 `;
 
@@ -121,7 +131,6 @@ export default class Footer extends Component {
         >
           <input type="email" name="email" />
         </form>
-
         <FormSection>
           <form onSubmit={this.handleSubmit}>
             <h3>MAILING LIST</h3>
@@ -135,16 +144,11 @@ export default class Footer extends Component {
               required
             />
             <button>
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                size="2x"
-                style={{ color: "#fff" }}
-              />
+              <FontAwesomeIconStyled icon={faEnvelope} size="2x" />
             </button>
           </form>
         </FormSection>
-
-        <ToastContainer autoClose={2000} />
+        <ToastContainer className="post" autoClose={2000} />
       </FooterBar>
     );
   }
