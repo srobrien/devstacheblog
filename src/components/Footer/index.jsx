@@ -56,9 +56,11 @@ const FormSection = styled.div`
 `;
 
 const encode = data => {
-  return Object.keys(data)
+  const test = Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
+  console.log(test);
+  return test;
 };
 
 export default class Footer extends Component {
