@@ -95,9 +95,9 @@ export default class Footer extends Component {
           method="post"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
+          hidden
         >
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="email" value="" />
+          <input type="email" name="email" />
         </form>
 
         <FormSection>
