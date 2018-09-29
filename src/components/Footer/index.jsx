@@ -42,6 +42,8 @@ const FormSection = styled.div`
     font-size: 22px;
     padding: 3px;
     display: block;
+		white-space: nowrap;
+  	overflow: hidden;
   }
 
   input {
