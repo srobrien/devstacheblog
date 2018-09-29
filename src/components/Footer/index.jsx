@@ -23,6 +23,17 @@ const FormSection = styled.div`
   position: absolute;
   right: 5%;
   bottom: 15%;
+  @media (max-width: 500px) {
+    position: relative;
+    margin-top: 150px;
+    text-align: center;
+    right: unset;
+    h3 {
+      width: 305px !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 
   h3 {
     width: 140px;
@@ -30,7 +41,6 @@ const FormSection = styled.div`
     color: #e583e2;
     font-size: 22px;
     padding: 3px;
-
     display: block;
   }
 
