@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
+import styled from "styled-components";
 import "react-toastify/dist/ReactToastify.min.css";
 
 const FooterBar = styled.div`
@@ -42,8 +42,8 @@ const FormSection = styled.div`
     font-size: 22px;
     padding: 3px;
     display: block;
-		white-space: nowrap;
-  	overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   input {

@@ -73,7 +73,7 @@ export default class SocialMediaBar extends Component {
           </a>
 
           <a
-            href="https://www.twitter.com"
+            href="https://twitter.com/full_stache_dev"
             target="_blank"
             rel="noopener noreferrer"
           >
