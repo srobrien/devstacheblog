@@ -87,7 +87,7 @@ export default class SocialMediaBar extends Component {
           </a>
 
           <a
-            href="https://www.instagram.com/rosco_p_c0ltrane/"
+            href="https://www.instagram.com/full_stache_developer/"
             target="_blank"
             rel="noopener noreferrer"
           >
