@@ -47,6 +47,10 @@ const themes = {
     bg: "#8b2da3",
     fg: "#ffffff",
   },
+  contentful: {
+    bg: "#192531",
+    fg: "#ffffff",
+  },
 };
 
 const Pill = styled.span`
