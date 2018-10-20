@@ -3,8 +3,8 @@ module.exports = {
     title: "Devstache - Web developers blog",
   },
   plugins: [
-		"gatsby-plugin-react-helmet",
-		`gatsby-plugin-favicon`,
+    "gatsby-plugin-react-helmet",
+    `gatsby-plugin-favicon`,
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
@@ -47,7 +47,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images-contentful`,
             options: {
-              maxWidth: 900,
+              maxWidth: 960,
             },
           },
         ],
