@@ -25,6 +25,12 @@ const SocialBar = styled.ul`
 const SocialButton = styled.li`
   @media (max-width: 620px) {
     ${props => (props.hideOnSmall ? "display: none" : "")};
+    background: ${props => props.bgColor} !important;
+    opacity: 0.7;
+    &:hover {
+      width: 40px !important;
+      transition: none !important;
+    }
   }
   text-align: right;
   background: rgba(77, 77, 77, 0.4);
