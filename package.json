@@ -25,6 +25,7 @@
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^1.6.27",
+    "jump.js": "^1.0.2",
     "lodash": "^4.17.11",
     "prismjs": "^1.15.0",
     "react": "^16.5.1",

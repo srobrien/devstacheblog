@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { Component } from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
   faInstagram,
   faGithub,
   faFacebookF,
   faLinkedinIn,
-} from '@fortawesome/free-brands-svg-icons'
+} from "@fortawesome/free-brands-svg-icons";
+import { faArrowAltCircleUp } from "@fortawesome/free-solid-svg-icons";
+import jump from "jump.js";
 
 const SocialBar = styled.ul`
-  @media (max-width: 620px) {
-    display: none;
-  }
   list-style: none;
   list-style-type: none;
   bottom: 10px;
@@ -21,9 +20,12 @@ const SocialBar = styled.ul`
   text-align: center;
   position: fixed;
   z-index: 2;
-`
+`;
 
 const SocialButton = styled.li`
+  @media (max-width: 620px) {
+    ${props => (props.hideOnSmall ? "display: none" : "")};
+  }
   text-align: right;
   background: rgba(77, 77, 77, 0.4);
   padding: 0;
@@ -39,35 +41,52 @@ const SocialButton = styled.li`
     width: 90px;
     cursor: pointer;
   }
-`
+`;
 
 export default class SocialMediaBar extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       loaded: false,
-    }
+    };
   }
 
   componentDidMount = () => {
-    this.setState({ loaded: true })
-  }
+    this.setState({ loaded: true });
+  };
 
   render() {
-    const { loaded } = this.state
+    const { loaded } = this.state;
     if (loaded) {
       return (
         <SocialBar>
+          <SocialButton
+            bgColor="rgba(229, 131, 226, 1)"
+            padding="5"
+            onClick={() => jump("#___gatsby")}
+            hideOnSmall={false}
+          >
+            <FontAwesomeIcon
+              icon={faArrowAltCircleUp}
+              size="2x"
+              style={{ color: "#fff" }}
+            />
+          </SocialButton>
+
           <a
             href="https://www.facebook.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialButton bgColor="rgba(59, 89, 152, 1)" padding="11">
+            <SocialButton
+              bgColor="rgba(59, 89, 152, 1)"
+              padding="11"
+              hideOnSmall={true}
+            >
               <FontAwesomeIcon
                 icon={faFacebookF}
                 size="2x"
-                style={{ color: '#fff' }}
+                style={{ color: "#fff" }}
               />
             </SocialButton>
           </a>
@@ -77,11 +96,15 @@ export default class SocialMediaBar extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialButton bgColor="rgba(29, 161, 242, 1)" padding="3">
+            <SocialButton
+              bgColor="rgba(29, 161, 242, 1)"
+              padding="3"
+              hideOnSmall={true}
+            >
               <FontAwesomeIcon
                 icon={faTwitter}
                 size="2x"
-                style={{ color: '#fff' }}
+                style={{ color: "#fff" }}
               />
             </SocialButton>
           </a>
@@ -91,11 +114,15 @@ export default class SocialMediaBar extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialButton padding="6" bgColor="rgba(244, 71, 71, 1)">
+            <SocialButton
+              padding="6"
+              bgColor="rgba(244, 71, 71, 1)"
+              hideOnSmall={true}
+            >
               <FontAwesomeIcon
                 icon={faInstagram}
                 size="2x"
-                style={{ color: '#fff' }}
+                style={{ color: "#fff" }}
               />
             </SocialButton>
           </a>
@@ -105,11 +132,15 @@ export default class SocialMediaBar extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialButton padding="4" bgColor="rgba(33, 31, 31, 1)">
+            <SocialButton
+              padding="4"
+              bgColor="rgba(33, 31, 31, 1)"
+              hideOnSmall={true}
+            >
               <FontAwesomeIcon
                 icon={faGithub}
                 size="2x"
-                style={{ color: '#fff' }}
+                style={{ color: "#fff" }}
               />
             </SocialButton>
           </a>
@@ -119,17 +150,21 @@ export default class SocialMediaBar extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SocialButton padding="6" bgColor="rgba(0, 119, 181, 1)">
+            <SocialButton
+              padding="6"
+              bgColor="rgba(0, 119, 181, 1)"
+              hideOnSmall={true}
+            >
               <FontAwesomeIcon
                 icon={faLinkedinIn}
                 size="2x"
-                style={{ color: '#fff' }}
+                style={{ color: "#fff" }}
               />
             </SocialButton>
           </a>
         </SocialBar>
-      )
+      );
     }
-    return <div />
+    return <div />;
   }
 }

@@ -92,7 +92,7 @@ export default class PostPage extends Component {
           <title>{postData.title}</title>
         </Helmet>
 
-        <ResponseHeader>
+        <ResponseHeader id={"top"}>
           <Link to={"/"} style={{ textDecoration: "none" }}>
             <h3>> BACK TO ALL POSTS</h3>
           </Link>
@@ -116,6 +116,7 @@ export default class PostPage extends Component {
         >
           Last Edited: {postData.updatedAt}
         </h4>
+
         <MainPost
           dangerouslySetInnerHTML={{
             __html: postData.body.childMarkdownRemark.html,

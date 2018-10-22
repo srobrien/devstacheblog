@@ -1,10 +1,9 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-
-import Helmet from 'react-helmet'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import './index.css'
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+import Helmet from "react-helmet";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "./index.css";
 
 const Layout = ({ children, location }) => (
   <StaticQuery
@@ -23,18 +22,18 @@ const Layout = ({ children, location }) => (
           title={data.site.siteMetadata.title}
           meta={[
             {
-              name: 'description',
+              name: "description",
               content:
-                'Welcome to Devstache, follow me as I blindly fumble around the web',
+                "Welcome to Devstache, follow me as I blindly fumble around the web",
             },
             {
-              name: 'keywords',
+              name: "keywords",
               content:
-                'web development,blog,javascript,node,react,redux,gatsby,graphql,open university,software developer,html,css',
+                "web development,blog,javascript,node,react,redux,gatsby,graphql,open university,software developer,html,css",
             },
             {
-              name: 'robots',
-              content: 'index,follow',
+              name: "robots",
+              content: "index,follow",
             },
           ]}
         >
@@ -43,10 +42,11 @@ const Layout = ({ children, location }) => (
 
         <Header data={data} location={location} />
         <div
+          id={"top"}
           style={{
-            margin: '0 auto',
+            margin: "0 auto",
             maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
+            padding: "0px 1.0875rem 1.45rem",
             paddingTop: 0,
           }}
         >
@@ -56,8 +56,6 @@ const Layout = ({ children, location }) => (
       </div>
     )}
   />
-)
+);
 
-
-
-export default Layout
+export default Layout;
