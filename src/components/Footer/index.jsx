@@ -125,7 +125,7 @@ export default class Footer extends Component {
   };
 
   errorMsg = () => {
-    toast.error("Oops! Something went horribly wrong!", {
+    toast.error("Oops! Something went wrong!", {
       position: toast.POSITION.BOTTOM_CENTER,
     });
   };
